@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Narrow Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/editor.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Dashboard 2100016097</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(getSpreadsheetData);
+
+        function getSpreadsheetData() {
+            var spreadsheetId = '18w1wvfUIbhVpEQXl6O1ltLPxkH5PHk7DqrhEdVWU6kk';
+            var range = 'Sheet1!A1:B6';
+
+            var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/' + spreadsheetId + '/gviz/tq?gid=0&range=' + range);
+            query.send(handleQueryResponse);
+        }
+
+        function handleQueryResponse(response) {
+            if (response.isError()) {
+                console.error('Error: ' + response.getMessage());
+                return;
+            }
+
+            var data = response.getDataTable();
+            drawCharts(data);
+        }
+
+        function drawCharts(data) {
+            var options1 = {
+                title: 'Column Chart',
+                width: 400,
+                height: 300,
+                legend: 'none',
+                hAxis: {
+                    title: 'Product'
+                },
+                vAxis: {
+                    title: 'Quantity'
+                }
+            };
+
+            var chart1 = new google.visualization.ColumnChart(document.getElementById('chart1'));
+            chart1.draw(data, options1);
+
+            var options2 = {
+                title: 'Pie Chart',
+                width: 400,
+                height: 300
+            };
+
+            var chart2 = new google.visualization.PieChart(document.getElementById('chart2'));
+            chart2.draw(data, options2);
+
+            var options3 = {
+                title: 'Bar Chart',
+                width: 400,
+                height: 300,
+                legend: 'none',
+                hAxis: {
+                    title: 'Product'
+                },
+                vAxis: {
+                    title: 'Quantity'
+                }
+            };
+
+            var chart3 = new google.visualization.BarChart(document.getElementById('chart3'));
+            chart3.draw(data, options3);
+
+            var options4 = {
+                title: 'Line Chart',
+                width: 400,
+                height: 300,
+                hAxis: {
+                    title: 'Product'
+                },
+                vAxis: {
+                    title: 'Quantity'
+                }
+            };
+
+            var chart4 = new google.visualization.LineChart(document.getElementById('chart4'));
+            chart4.draw(data, options4);
+        }
+
+    </script>
+
+    <style>
+        body {
+            margin-top: 50px;
+            padding: 0 30px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1">Dashboard</span>
+  </nav>
+  <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header">Grafik 1</div>
+                  <div class="card-body">
+                      <div id="chart1"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header">Grafik 2</div>
+                  <div class="card-body">
+                      <div id="chart2"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row mt-4">
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header">Grafik 3</div>
+                  <div class="card-body">
+                      <div id="chart3"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-header">Grafik 4</div>
+                  <div class="card-body">
+                      <div id="chart4"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>
+</html>
