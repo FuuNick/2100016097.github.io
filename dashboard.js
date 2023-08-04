@@ -21,7 +21,7 @@ function handleQueryResponse(response) {
 
 function drawCharts(data) {
     var options = {
-        title: 'Judul Grafik',
+        title: '',
         width: 400,
         height: 300
     };
